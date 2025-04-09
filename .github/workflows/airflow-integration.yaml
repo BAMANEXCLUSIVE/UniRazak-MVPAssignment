@@ -1,35 +1,45 @@
-from airflow import DAG
-from airflow.operators.python import PythonOperator
-from datetime import datetime
+name: Apache Airflow Integration
 
-# Define a Python function for the task
-def update_project_data():
-  print("Project data updated successfully!")
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
 
-# Define the DAG
-default_args = {
-  'owner': 'airflow',
-  'depends_on_past': False,
-  'email_on_failure': False,
-  'email_on_retry': False,
-  'retries': 1,
-}
+jobs:
+  airflow-integration:
+    runs-on: ubuntu-latest
 
-with DAG(
-  dag_id='project_management_updates',
-  default_args=default_args,
-  description='Automates project management updates',
-  schedule_interval='@daily',
-  start_date=datetime(2023, 1, 1),
-  catchup=False,
-  tags=['project', 'management'],
-) as dag:
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
 
-  # Define a task
-  update_task = PythonOperator(
-    task_id='update_project_data',
-    python_callable=update_project_data,
-  )
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
 
-  # Set task dependencies (if needed)
-  update_task
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install apache-airflow
+
+    - name: Create Airflow DAG
+      run: |
+        echo "
+        from airflow import DAG
+        from airflow.operators.python_operator import PythonOperator
+        from datetime import datetime
+
+        def update_project_data():
+            print('Project data updated successfully!')
+
+        with DAG('project_management_updates', start_date=datetime(2023, 1, 1), schedule_interval='@daily', catchup=False) as dag:
+            update_task = PythonOperator(
+                task_id='update_project_data',
+                python_callable=update_project_data
+            )
+        " > project_dag.py
+
+    - name: Run Airflow DAG
+      run: |
+        airflow db init
+        airflow dags trigger -d project_management_updates
