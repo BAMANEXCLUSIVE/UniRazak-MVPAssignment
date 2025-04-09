@@ -24,3 +24,12 @@ jobs:
 
     - name: Run workflow script
       run: python workflow.py
+
+    - name: Run linting
+      run: flake8 .
+
+    - name: Run tests
+      run: pytest
+
+    - name: Build project
+      run: python setup.py build

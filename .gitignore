@@ -20,3 +20,12 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+# Ignore Python cache files
+__pycache__/
+
+# Ignore pytest cache files
+.pytest_cache/
+
+# Ignore build directory
+build/
