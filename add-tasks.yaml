@@ -1,0 +1,59 @@
+name: Add Tasks to Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  add-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Add tasks to the GitHub Project
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          COLUMN_ID=$(gh api --header "Accept: application/vnd.github.inertia-preview+json" /projects/9/columns --jq '.[0].id') 
+          
+          gh api --method POST \
+            -H "Accept: application/vnd.github.inertia-preview+json" \
+            /projects/columns/$COLUMN_ID/cards \
+            -f note='Define project objectives and scope.'
+
+          gh api --method POST \
+            -H "Accept: application/vnd.github.inertia-preview+json" \
+            /projects/columns/$COLUMN_ID/cards \
+            -f note='Form teams and assign roles.'
+
+          gh api --method POST \
+            -H "Accept: application/vnd.github.inertia-preview+json" \
+            /projects/columns/$COLUMN_ID/cards \
+            -f note='Develop a detailed project plan.'
+
+          gh api --method POST \
+            -H "Accept: application/vnd.github.inertia-preview+json" \
+            /projects/columns/$COLUMN_ID/cards \
+            -f note='Schedule virtual meetings.'
+
+          gh api --method POST \
+            -H "Accept: application/vnd.github.inertia-preview+json" \
+            /projects/columns/$COLUMN_ID/cards \
+            -f note='Track progress.'
+
+          gh api --method POST \
+            -H "Accept: application/vnd.github.inertia-preview+json" \
+            /projects/columns/$COLUMN_ID/cards \
+            -f note='Prepare mid-project and final reports.'
+
+          gh api --method POST \
+            -H "Accept: application/vnd.github.inertia-preview+json" \
+            /projects/columns/$COLUMN_ID/cards \
+            -f note='Create a virtual presentation.'
