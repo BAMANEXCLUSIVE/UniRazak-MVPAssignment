@@ -1,0 +1,40 @@
+name: Apache Airflow Integration
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
+
+jobs:
+  airflow-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install Dependencies
+      run: |
+        pip install apache-airflow
+
+    - name: Create and Run Airflow DAG
+      run: |
+        echo "
+        from airflow import DAG
+        from airflow.operators.python_operator import PythonOperator
+        from datetime import datetime
+
+        def update_project_data():
+            print('Project data updated successfully!')
+
+        with DAG('project_management_updates', start_date=datetime(2023, 1, 1), schedule_interval='@daily') as dag:
+            update_task = PythonOperator(
+                task_id='update_project_data',
+                python_callable=update_project_data
+            )
+        " > project_dag.py
+        python project_dag.py
