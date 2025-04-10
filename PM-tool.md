@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="../style.css">
 #PM-Tool shell file
 
 # Define the main-system and sub-system
