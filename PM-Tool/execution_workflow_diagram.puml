@@ -1,0 +1,34 @@
+@startuml
+' Define actors and participants
+actor User
+participant "Project Management Tool" as PMT
+
+' Workflow execution starts
+User -> PMT: Start Project (06/04/2025)
+PMT -> User: "Project Initiation Completed"
+alt Planning Phase
+    PMT -> User: "Planning Completed (07/04/2025)"
+else Planning Delayed
+    PMT -> User: "Planning needs revision"
+end
+
+alt Execution Phase
+    PMT -> User: "Task Execution Completed (08/04/2025)"
+    PMT -> PMT: Fault Injection Simulation
+    alt Fault Detected
+        PMT -> User: "Recovery Actions Implemented"
+    else No Fault Detected
+        PMT -> User: "Execution Proceeded Smoothly"
+    end
+else Execution Delayed
+    PMT -> User: "Execution needs review"
+end
+
+alt Monitoring and Controlling Phase
+    PMT -> User: "Tracking and Changes Managed (09/04/2025)"
+else Monitoring Delayed
+    PMT -> User: "Adjustments Required"
+end
+
+PMT -> User: "Project Successfully Closed (10/04/2025)"
+@enduml
