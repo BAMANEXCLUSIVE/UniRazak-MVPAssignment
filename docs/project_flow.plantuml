@@ -1,0 +1,9 @@
+@startuml
+(*) --> "Project Setup"
+"Project Setup" --> "Requirements Gathering"
+"Requirements Gathering" --> "Platform Development"
+"Platform Development" --> "ESG Compliance Setup"
+"ESG Compliance Setup" --> "Marketing Campaign"
+"Marketing Campaign" --> "Deployment"
+"Deployment" --> (*)
+@enduml
