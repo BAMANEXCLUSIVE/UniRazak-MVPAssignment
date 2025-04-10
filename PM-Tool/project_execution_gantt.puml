@@ -1,0 +1,16 @@
+@startgantt
+' Define the project timeline
+Project starts 2025-04-06
+[Initiation] lasts 1 day
+[Planning] lasts 1 day and starts after [Initiation]'s end
+[Execution] lasts 2 days and starts after [Planning]'s end
+[Monitoring and Controlling] lasts 1 day and starts after [Execution]'s end
+[Closing] lasts 1 day and starts after [Monitoring and Controlling]'s end
+
+' Milestones
+[Initiation] is colored in lightgreen
+[Planning] is colored in lightblue
+[Execution] is colored in orange
+[Monitoring and Controlling] is colored in yellow
+[Closing] is colored in lightgray
+@endgantt
