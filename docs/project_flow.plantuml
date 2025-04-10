@@ -4,6 +4,7 @@
 "Requirements Gathering" --> "Platform Development"
 "Platform Development" --> "ESG Compliance Setup"
 "ESG Compliance Setup" --> "Marketing Campaign"
-"Marketing Campaign" --> "Deployment"
+"Marketing Campaign" --> "User Testing"
+"User Testing" --> "Deployment"
 "Deployment" --> (*)
 @enduml
