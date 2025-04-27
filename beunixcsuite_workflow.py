@@ -82,6 +82,10 @@ tasks = {
     "BuildAndDeploymentFailureHandler": {
         "script": "/workspaces/BEunixCsuite/build_deployment_failure_handler.py",
         "dependencies": []
+    },
+    "AutoAddTasks": {
+        "script": "/workspaces/BEunixCsuite/auto_add_tasks.py",
+        "dependencies": []
     }
 }
 
