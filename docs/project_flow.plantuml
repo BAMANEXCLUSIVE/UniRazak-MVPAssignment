@@ -7,4 +7,9 @@
 "Marketing Campaign" --> "User Testing"
 "User Testing" --> "Deployment"
 "Deployment" --> (*)
+
+"Deployment" --> "Overall Outcomes"
+"Overall Outcomes" --> "Detailed Requirements"
+"Detailed Requirements" --> "Project Requirements"
+"Project Requirements" --> "Requirements for the Project"
 @enduml
