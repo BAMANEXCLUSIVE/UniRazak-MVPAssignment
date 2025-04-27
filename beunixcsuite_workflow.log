@@ -23,4 +23,6 @@
 2025-04-09 14:50:00,308 - INFO - Task VirtualProjectManagementDAG completed successfully.
 2025-04-09 14:50:00,308 - INFO - Starting task: MarketingProjectManagement
 2025-04-09 14:50:00,326 - INFO - Task MarketingProjectManagement completed successfully.
-2025-04-09 14:50:00,326 - INFO - Workflow completed!
+2025-04-09 14:50:00,326 - INFO - Starting task: BuildAndDeploymentFailureHandler
+2025-04-09 14:50:00,344 - INFO - Task BuildAndDeploymentFailureHandler completed successfully.
+2025-04-09 14:50:00,344 - INFO - Workflow completed!

@@ -78,6 +78,10 @@ tasks = {
     "MarketingProjectManagement": {
         "script": "/workspaces/BEunixCsuite/marketing_project_management.py",
         "dependencies": ["DataProcessing"]
+    },
+    "BuildAndDeploymentFailureHandler": {
+        "script": "/workspaces/BEunixCsuite/build_deployment_failure_handler.py",
+        "dependencies": []
     }
 }
 
