@@ -15,6 +15,10 @@ def run_data_processing():
     import subprocess
     subprocess.run(["python", "/workspaces/BEunixCsuite/data_processing.py"], check=True)
 
+def update_beunixcsuite_workflow():
+    import subprocess
+    subprocess.run(["python", "/workspaces/BEunixCsuite/beunixcsuite_workflow.py"], check=True)
+
 with DAG(
     'data_processing_workflow',
     default_args=default_args,
@@ -29,4 +33,9 @@ with DAG(
         python_callable=run_data_processing,
     )
 
-    data_processing_task
+    update_workflow_task = PythonOperator(
+        task_id='update_beunixcsuite_workflow',
+        python_callable=update_beunixcsuite_workflow,
+    )
+
+    data_processing_task >> update_workflow_task

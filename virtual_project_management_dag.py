@@ -27,6 +27,10 @@ def final_reporting(**kwargs):
 def presentation_prep(**kwargs):
     print("Subtask: Presentation prepared. Highlighting key achievements and project outcomes.")
 
+def update_beunixcsuite_workflow():
+    import subprocess
+    subprocess.run(["python", "/workspaces/BEunixCsuite/beunixcsuite_workflow.py"], check=True)
+
 # Default arguments for the DAG
 default_args = {
     'owner': 'airflow',
@@ -96,6 +100,11 @@ with DAG(
         provide_context=True,
     )
 
+    update_workflow_task = PythonOperator(
+        task_id='update_beunixcsuite_workflow',
+        python_callable=update_beunixcsuite_workflow,
+    )
+
     # Establish task dependencies
     task_project_selection >> task_team_formation >> task_planning_phase >> task_collaboration_setup >> task_execution_phase
-    task_execution_phase >> task_mid_project_reporting >> task_final_reporting >> task_presentation_prep
+    task_execution_phase >> task_mid_project_reporting >> task_final_reporting >> task_presentation_prep >> update_workflow_task

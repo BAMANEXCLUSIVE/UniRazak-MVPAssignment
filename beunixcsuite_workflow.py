@@ -66,6 +66,18 @@ tasks = {
     "StatisticsAndAnalysis": {
         "script": "/workspaces/BEunixCsuite/statistics_analysis.py",
         "dependencies": ["DataProcessing", "MLAndAI"]
+    },
+    "DataProcessingDAG": {
+        "script": "/workspaces/BEunixCsuite/data_processing_dag.py",
+        "dependencies": ["DataProcessing"]
+    },
+    "VirtualProjectManagementDAG": {
+        "script": "/workspaces/BEunixCsuite/virtual_project_management_dag.py",
+        "dependencies": ["DataProcessing"]
+    },
+    "MarketingProjectManagement": {
+        "script": "/workspaces/BEunixCsuite/marketing_project_management.py",
+        "dependencies": ["DataProcessing"]
     }
 }
 

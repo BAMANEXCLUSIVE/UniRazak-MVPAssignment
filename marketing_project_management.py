@@ -27,6 +27,10 @@ def mid_campaign_review(**kwargs):
 def final_campaign_report(**kwargs):
     print("Final campaign report generated. Results: 25% increase in brand awareness, 40% growth in social media followers.")
 
+def update_beunixcsuite_workflow():
+    import subprocess
+    subprocess.run(["python", "/workspaces/BEunixCsuite/beunixcsuite_workflow.py"], check=True)
+
 # Default arguments for the DAG
 default_args = {
     'owner': 'airflow',
@@ -96,7 +100,12 @@ with DAG(
         provide_context=True,
     )
 
+    update_workflow_task = PythonOperator(
+        task_id='update_beunixcsuite_workflow',
+        python_callable=update_beunixcsuite_workflow,
+    )
+
     # Task Dependencies
     task_campaign_goal_definition >> task_audience_research >> task_content_strategy >> task_content_creation
     task_content_creation >> task_campaign_execution >> task_campaign_monitoring >> task_mid_campaign_review
-    task_mid_campaign_review >> task_final_campaign_report
+    task_mid_campaign_review >> task_final_campaign_report >> update_workflow_task
