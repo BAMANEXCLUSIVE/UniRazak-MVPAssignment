@@ -19,3 +19,6 @@ mkdir sub-system
 
 # Install additional frameworks
 npm install react vue @nestjs/core koa
+
+# Install additional dependencies
+npm install mongoose dotenv axios winston jsonwebtoken

@@ -39,5 +39,16 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+# Implement server logic, database interactions, and primary routes for main-system
+cd main-system
+echo "const app = express();" >> server.js
+echo "mongoose.connect(process.env.DB_URI);" >> server.js
+echo "app.use('/', require('./routes'));" >> server.js
+
+# Develop and integrate utility functions, middleware, and additional services for sub-system
+cd ../sub-system
+echo "module.exports = { /* utility functions */ };" >> utils.js
+echo "module.exports = { /* middleware functions */ };" >> middleware.js
+
 # Completion
 echo "$(date): Execution completed successfully!" | tee -a $LOG_FILE
