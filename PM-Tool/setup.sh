@@ -19,3 +19,9 @@ mkdir sub-system
 
 # Install additional frameworks
 npm install react vue @nestjs/core koa
+<<<<<<< HEAD
+=======
+
+# Install additional dependencies
+npm install mongoose dotenv axios winston jsonwebtoken
+>>>>>>> codespace-jubilant-acorn-694wpr6gxj44h4vgw
