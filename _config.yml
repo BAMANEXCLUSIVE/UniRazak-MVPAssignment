@@ -1,0 +1,14 @@
+title: My Jekyll Site
+description: A simple Jekyll site
+baseurl: "" # Leave empty unless the site is hosted in a subdirectory
+url: "http://example.com" # Replace with your site's URL
+theme: minima
+exclude:
+  - venv
+  - node_modules
+  - .git
+  - .github
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .DS_Store

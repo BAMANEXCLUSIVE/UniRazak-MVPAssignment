@@ -1,0 +1,5 @@
+ID,Task,Duration,Predecessors
+1.0,Requirements Gathering,2w,-
+2.0,Platform Development,12w,1.0
+2.1,User Authentication,3w,1.0
+2.2,Product Catalog,4w,2.1

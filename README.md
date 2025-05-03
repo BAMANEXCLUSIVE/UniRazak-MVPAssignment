@@ -1,48 +1,41 @@
-<link rel="stylesheet" type="text/css" href="../style.css">
-# Project Management Tool
+![act-logo](https://raw.githubusercontent.com/wiki/nektos/act/img/logo-150.png)
 
-## Table of Contents
-- [Project Proposal](#project-proposal)
-- [Overall Outcomes](#overall-outcomes)
+# Overview [![push](https://github.com/nektos/act/workflows/push/badge.svg?branch=master&event=push)](https://github.com/nektos/act/actions) [![Join the chat at https://gitter.im/nektos/act](https://badges.gitter.im/nektos/act.svg)](https://gitter.im/nektos/act?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Go Report Card](https://goreportcard.com/badge/github.com/nektos/act)](https://goreportcard.com/report/github.com/nektos/act) [![awesome-runners](https://img.shields.io/badge/listed%20on-awesome--runners-blue.svg)](https://github.com/jonico/awesome-runners)
 
-## Project Proposal
-The project aims to develop a comprehensive project management tool that integrates chaos engineering principles to enhance system resilience.
+> "Think globally, `act` locally"
 
-## Overall Outcomes
-The GreenThreads project aims to achieve the following key outcomes:
+Run your [GitHub Actions](https://developer.github.com/actions/) locally! Why would you want to do this? Two reasons:
 
-1. **Financial Success:**
-   - Achieve $500k Annual Recurring Revenue (ARR) within 18 months.
-   - Maintain a profit margin of at least 20%.
+- **Fast Feedback** - Rather than having to commit/push every time you want to test out the changes you are making to your `.github/workflows/` files (or for any changes to embedded GitHub actions), you can use `act` to run the actions locally. The [environment variables](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables) and [filesystem](https://help.github.com/en/actions/reference/virtual-environments-for-github-hosted-runners#filesystems-on-github-hosted-runners) are all configured to match what GitHub provides.
+- **Local Task Runner** - I love [make](<https://en.wikipedia.org/wiki/Make_(software)>). However, I also hate repeating myself. With `act`, you can use the GitHub Actions defined in your `.github/workflows/` to replace your `Makefile`!
 
-2. **ESG Compliance:**
-   - Maintain a 90%+ ESG compliance score throughout the project duration.
-   - Implement sustainable practices in the supply chain and production processes.
+> [!TIP]
+> **Now Manage and Run Act Directly From VS Code!**<br/>
+> Check out the [GitHub Local Actions](https://sanjulaganepola.github.io/github-local-actions-docs/) Visual Studio Code extension which allows you to leverage the power of `act` to run and test workflows locally without leaving your editor.
 
-3. **Market Penetration:**
-   - Achieve 30% market penetration in target regions within the first year.
-   - Expand to additional regions in the second year.
+# How Does It Work?
 
-4. **Customer Satisfaction:**
-   - Achieve a customer satisfaction score of 85% or higher.
-   - Implement a robust customer feedback system to continuously improve the platform.
+When you run `act` it reads in your GitHub Actions from `.github/workflows/` and determines the set of actions that need to be run. It uses the Docker API to either pull or build the necessary images, as defined in your workflow files and finally determines the execution path based on the dependencies that were defined. Once it has the execution path, it then uses the Docker API to run containers for each action based on the images prepared earlier. The [environment variables](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables) and [filesystem](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#file-systems) are all configured to match what GitHub provides.
 
-5. **Brand Recognition:**
-   - Increase brand recognition and awareness by 50% through targeted marketing campaigns.
-   - Collaborate with influencers and eco-friendly organizations to promote the brand.
+Let's see it in action with a [sample repo](https://github.com/cplee/github-actions-demo)!
 
-### Metrics for Success
-- **Revenue:** $500k ARR within 18 months.
-- **Profit Margin:** At least 20%.
-- **ESG Compliance Score:** 90%+.
-- **Market Penetration:** 30% in target regions.
-- **Customer Satisfaction:** 85%+.
-- **Brand Recognition:** 50% increase.
+![Demo](https://raw.githubusercontent.com/wiki/nektos/act/quickstart/act-quickstart-2.gif)
 
-### Key Deliverables
-- **E-commerce Platform:** A fully functional and user-friendly e-commerce platform.
-- **Sustainable Supply Chain:** Implementation of sustainable practices in the supply chain.
-- **Marketing Campaigns:** Targeted marketing campaigns to increase brand awareness.
-- **Customer Feedback System:** A system to collect and analyze customer feedback for continuous improvement.
+# Act User Guide
 
-For more details, refer to the [Overall Outcomes](docs/project_charter.md#overall-outcomes) section in the project charter.
+Please look at the [act user guide](https://nektosact.com) for more documentation.
+
+# Support
+
+Need help? Ask on [Gitter](https://gitter.im/nektos/act)!
+
+# Contributing
+
+Want to contribute to act? Awesome! Check out the [contributing guidelines](CONTRIBUTING.md) to get involved.
+
+## Manually building from source
+
+- Install Go tools 1.20+ - (<https://golang.org/doc/install>)
+- Clone this repo `git clone git@github.com:nektos/act.git`
+- Run unit tests with `make test`
+- Build and install: `make install`
