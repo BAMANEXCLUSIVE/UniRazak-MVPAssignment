@@ -1,0 +1,36 @@
+{
+    "tasks": [
+        {
+            "id": "project_selection",
+            "description": "Project selection process completed. Objective: Create an e-commerce platform for students."
+        },
+        {
+            "id": "team_formation",
+            "description": "Team formation completed. Roles assigned: Project Manager, Backend Developer, Frontend Developer, Business Analyst, Quality Analyst."
+        },
+        {
+            "id": "planning_phase",
+            "description": "Project planning completed. Milestones, deliverables, and timelines defined."
+        },
+        {
+            "id": "collaboration_setup",
+            "description": "Collaboration tools setup completed. Using Trello for task management, Microsoft Teams for communication."
+        },
+        {
+            "id": "execution_phase",
+            "description": "Project execution ongoing. Tasks assigned, and progress tracked."
+        },
+        {
+            "id": "mid_project_reporting",
+            "description": "Mid-project report generated. Summary of progress, challenges, and adjustments."
+        },
+        {
+            "id": "final_reporting",
+            "description": "Final report generated. Documenting accomplishments, lessons learned, and insights."
+        },
+        {
+            "id": "presentation_prep",
+            "description": "Presentation prepared. Highlighting key achievements and project outcomes."
+        }
+    ]
+}
